@@ -1,48 +1,64 @@
 import tts
 
 valid = "sdfjkl"
+<<<<<<< HEAD
 alpha = {"100000":"a","110000":"b","100100":"c","100110":"d","100010":"e","110100":"f","110110":"g","110010":"h","010100":"i","010110":"j","101000":"k","111000":"l","101100":"m","101110":"n","101010":"o","111100":"p","111110":"q","111010":"r","011100":"s","011110":"t","101001":"u","111001":"v","010111":"w","101101":"x","101111":"y","101011":"z"}
 braille = {"a":"\u2801","b":"\u2803","c":"\u2809","d":"\u2819","e":"\u2811","f":"\u280b","g":"\u281b","h":"\u2813","i":"\u280a","j":"\u281a","k":"\u2805","l":"\u2807","m":"\u280d","n":"\u281d","o":"\u2815","p":"\u280f","q":"\u281f","r":"\u2817","s":"\u280e","t":"\u281e","u":"\u2825","v":"\u2827","w":"\u283a","x":"\u282d","y":"\u283d","z":"\u2835"}
+=======
+alpha = {"*ooooo":"a","**oooo":"b","*oo*oo":"c","*oo**o":"d","*ooo*o":"e","**o*oo":"f","**o**o":"g","**oo*o":"h","o*o*oo":"i","o*o**o":"j","*o*ooo":"k","***ooo":"l","*o**oo":"m","*o***o":"n","*o*o*o":"o","****oo":"p","*****o":"q","***o*o":"r","o***oo":"s","o****o":"t","*o*oo*":"u","***oo*":"v","o*o***":"w","*o**o*":"x","*o****":"y","*o*o**":"z"}
+
+
+def printKey(letter,keys):
+    print "%s:\t%c%c\n\t%c%c\n\t%c%c" % (letter,keys[0],keys[3],keys[1],keys[4],keys[2],keys[5])
+
+>>>>>>> 95e0064ca9d0de5b56b41f277105314b085350f6
 class Braille:
     def __init__(self):
         self.output = ""
+        self.word = ""
+
     def setKeys(self,keys):
-        result = "000000"
+        result = "oooooo"
         for key in keys:
-            if(key in valid):
-                val = valid.find(key)
-                result= result[:val]+str(1)+result[val+1:]
+            if(key.lower() in valid):
+                val = valid.find(key.lower())
+                result= result[:val]+"*"+result[val+1:]
         return result
+<<<<<<< HEAD
     def toBraille(letter):
         return braille[letter]
+=======
+
+>>>>>>> 95e0064ca9d0de5b56b41f277105314b085350f6
     def write(self):
         keys = raw_input()
         if keys == "":
+            tts.say(self.output)
             return -1
         elif keys == " ":
+            tts.say(self.word)
             self.output+=" "
-            return self.output
+            self.word = ""
+            return 1
         else:
-            temp = self.setKeys(keys)
-            if alpha.has_key(temp):
-                letter = alpha[temp]
+            keysPressed = self.setKeys(keys)
+            if alpha.has_key(keysPressed):
+                letter = alpha[keysPressed]
+                tts.say(letter)
+                printKey(letter,keysPressed)
                 self.output += letter
-                return self.output
+                self.word += letter
+                return 1
             else:
-                return self.output
+                return 1
     def __str__(self):
         return self.output
-def writer(b):
-    bw = b.write()
+
+def writer():
+    b = Braille()
+    bw = 1
     while bw!=-1:
-        print bw
-        tts.say(bw)
         bw = b.write()
 
-b = Braille()
-writer(b)
-                    
-                    
-                
-
+writer()     
 
