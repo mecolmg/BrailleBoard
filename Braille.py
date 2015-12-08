@@ -6,6 +6,8 @@ alpha = {"100000":"a","110000":"b","100100":"c","100110":"d","100010":"e","11010
 class Braille:
     def __init__(self):
         self.output = ""
+        self.word = ""
+
     def setKeys(self,keys):
         result = "000000"
         for key in keys:
@@ -13,34 +15,36 @@ class Braille:
                 val = valid.find(key)
                 result= result[:val]+str(1)+result[val+1:]
         return result
+
     def write(self):
         keys = raw_input()
         if keys == "":
+            tts.say(self.output)
             return -1
         elif keys == " ":
+            tts.say(self.word)
             self.output+=" "
-            return self.output
+            self.word = ""
+            return 1
         else:
-            temp = self.setKeys(keys)
-            if alpha.has_key(temp):
-                letter = alpha[temp]
+            keysPressed = self.setKeys(keys)
+            if alpha.has_key(keysPressed):
+                letter = alpha[keysPressed]
+                tts.say(letter)
                 self.output += letter
-                return self.output
+                self.word += letter
+                return 1
             else:
-                return self.output
+                return 1
     def __str__(self):
         return self.output
-def writer(b):
-    bw = b.write()
+
+def writer():
+    b = Braille()
+    bw = 1
     while bw!=-1:
-        print bw
-        tts.say(bw)
         bw = b.write()
 
-b = Braille()
-writer(b)
-                    
-                    
-                
+writer()     
 
 
