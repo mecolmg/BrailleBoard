@@ -2,7 +2,7 @@ import tts
 
 valid = "sdfjkl"
 alpha = {"100000":"a","110000":"b","100100":"c","100110":"d","100010":"e","110100":"f","110110":"g","110010":"h","010100":"i","010110":"j","101000":"k","111000":"l","101100":"m","101110":"n","101010":"o","111100":"p","111110":"q","111010":"r","011100":"s","011110":"t","101001":"u","111001":"v","010111":"w","101101":"x","101111":"y","101011":"z"}
-
+braille = {"a":"\u2801","b":"\u2803","c":"\u2809","d":"\u2819","e":"\u2811","f":"\u280b","g":"\u281b","h":"\u2813","i":"\u280a","j":"\u281a","k":"\u2805","l":"\u2807","m":"\u280d","n":"\u281d","o":"\u2815","p":"\u280f","q":"\u281f","r":"\u2817","s":"\u280e","t":"\u281e","u":"\u2825","v":"\u2827","w":"\u283a","x":"\u282d","y":"\u283d","z":"\u2835"}
 class Braille:
     def __init__(self):
         self.output = ""
@@ -13,6 +13,8 @@ class Braille:
                 val = valid.find(key)
                 result= result[:val]+str(1)+result[val+1:]
         return result
+    def toBraille(letter):
+        return braille[letter]
     def write(self):
         keys = raw_input()
         if keys == "":
