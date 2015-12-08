@@ -1,4 +1,5 @@
 import tts
+import os
 
 valid = "sdfjkl"
 alpha = {"100000":"a","110000":"b","100100":"c","100110":"d","100010":"e","110100":"f","110110":"g","110010":"h","010100":"i","010110":"j","101000":"k","111000":"l","101100":"m","101110":"n","101010":"o","111100":"p","111110":"q","111010":"r","011100":"s","011110":"t","101001":"u","111001":"v","010111":"w","101101":"x","101111":"y","101011":"z"}
@@ -8,7 +9,12 @@ alpha = {"*ooooo":"a","**oooo":"b","*oo*oo":"c","*oo**o":"d","*ooo*o":"e","**o*o
 
 
 def printKey(letter,keys):
+    os.system('clear')
     print "%s:\t%c%c\n\t%c%c\n\t%c%c" % (letter,keys[0],keys[3],keys[1],keys[4],keys[2],keys[5])
+
+def printStr(str):
+    os.system('clear')
+    print str
 
 class Braille:
     def __init__(self):
@@ -27,18 +33,40 @@ class Braille:
 
     def write(self):
         keys = raw_input()
+        # Backspace:
+        if ";" in keys:
+            for key in keys:
+                if key == ";":
+                    if(len(self.output) > 0):
+                        self.output = self.output[:-1]
+                        if(len(self.output) >= 0):
+                            i=-1
+                            word = ""
+                            while(len(self.output) >= i*-1 and self.output[i] != " "):
+                                word = self.output[i] + word
+                                i-=1
+                            self.word = word
+            tts.say(word)
+            printStr(word)
+        # End of sentence:
         if keys == "":
             tts.say(self.output)
+            printStr(self.output)
             return -1
+        # Space:
         elif keys == " ":
             tts.say(self.word)
+            printStr(self.word)
             self.output+=" "
             self.word = ""
             return 1
+        # Letter:
         else:
             keysPressed = self.setKeys(keys)
-            if alpha.has_key(keysPressed):
+            if alpha.has_key(keysPressed):                    
                 letter = alpha[keysPressed]
+                if "a" in keys.lower():
+                    letter = letter.upper()
                 tts.say(letter)
                 printKey(letter,keysPressed)
                 self.output += letter
