@@ -1,7 +1,11 @@
 import tts
 
 valid = "sdfjkl"
-alpha = {"100000":"a","110000":"b","100100":"c","100110":"d","100010":"e","110100":"f","110110":"g","110010":"h","010100":"i","010110":"j","101000":"k","111000":"l","101100":"m","101110":"n","101010":"o","111100":"p","111110":"q","111010":"r","011100":"s","011110":"t","101001":"u","111001":"v","010111":"w","101101":"x","101111":"y","101011":"z"}
+alpha = {"*ooooo":"a","**oooo":"b","*oo*oo":"c","*oo**o":"d","*ooo*o":"e","**o*oo":"f","**o**o":"g","**oo*o":"h","o*o*oo":"i","o*o**o":"j","*o*ooo":"k","***ooo":"l","*o**oo":"m","*o***o":"n","*o*o*o":"o","****oo":"p","*****o":"q","***o*o":"r","o***oo":"s","o****o":"t","*o*oo*":"u","***oo*":"v","o*o***":"w","*o**o*":"x","*o****":"y","*o*o**":"z"}
+
+
+def printKey(letter,keys):
+    print "%s:\t%c%c\n\t%c%c\n\t%c%c" % (letter,keys[0],keys[3],keys[1],keys[4],keys[2],keys[5])
 
 class Braille:
     def __init__(self):
@@ -9,11 +13,11 @@ class Braille:
         self.word = ""
 
     def setKeys(self,keys):
-        result = "000000"
+        result = "oooooo"
         for key in keys:
-            if(key in valid):
-                val = valid.find(key)
-                result= result[:val]+str(1)+result[val+1:]
+            if(key.lower() in valid):
+                val = valid.find(key.lower())
+                result= result[:val]+"*"+result[val+1:]
         return result
 
     def write(self):
@@ -31,6 +35,7 @@ class Braille:
             if alpha.has_key(keysPressed):
                 letter = alpha[keysPressed]
                 tts.say(letter)
+                printKey(letter,keysPressed)
                 self.output += letter
                 self.word += letter
                 return 1
@@ -46,5 +51,4 @@ def writer():
         bw = b.write()
 
 writer()     
-
 
