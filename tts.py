@@ -1,4 +1,5 @@
 from espeak import espeak
 
 def say(word):
-    espeak.synth(word)
+    for c in word:  #says one letter at a time
+        espeak.synth(c)
