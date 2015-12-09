@@ -9,3 +9,13 @@ The brailler is a very simple concept, the six internal keys each map to one of 
 With our implementation, the children just have to find the two tactile bumps over the 'F' and 'J' keys, and are able to keep their hands there, with their thumbs resting on the space. The mappings for keys are as follows:
 
 ![Image of Braille Alphabet](http://faculty.washington.edu/chudler/gif/braille.gif)
+
+Limited punctutation is also included:
+Character | Braille
+--------- | -------
+.         | &#x2832;
+,         | &#x2802;
+:         | &#x2812;
+?         | &#x2826;
+!         | &#x2816;
+
