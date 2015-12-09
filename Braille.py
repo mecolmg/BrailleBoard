@@ -49,6 +49,10 @@ class Braille:
         if keys == "":
             tts.say(self.output)
             printStr(self.output)
+	    result = ""
+	    for c in self.output:
+	        result+=braille[c]
+	    printStr(result)
             return -1
         # Space:
         elif keys == " ":
