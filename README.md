@@ -11,11 +11,27 @@ With our implementation, the children just have to find the two tactile bumps ov
 ![Image of Braille Alphabet](http://faculty.washington.edu/chudler/gif/braille.gif)
 
 Limited punctutation is also included:
-Character | Braille
---------- | -------9
-.         | &#x2832;
-,         | &#x2802;
-:         | &#x2812;
-?         | &#x2826;
-!         | &#x2816;
 
+| Character | Braille  |
+| --------- | -------  |
+| .         | &#x2832; |
+| ,         | &#x2802; |
+| :         | &#x2812; |
+| ?         | &#x2826; |
+| !         | &#x2816; |
+
+The key mappings are as follows:
+
+Key | Mapping
+----| -------
+a | Upercase
+s | 3
+d | 2
+f | 1
+j | 4
+k | 5
+l | 6
+; | Backspace
+
+Which follows this pattern:
+![Pattern](http://www.faculty.umb.edu/wendy_buckley/BrailleI/class01/images/image001.jpg)
