@@ -12,7 +12,7 @@ With our implementation, the children just have to find the two tactile bumps ov
 
 Limited punctutation is also included:
 Character | Braille
---------- | -------
+--------- | -------9
 .         | &#x2832;
 ,         | &#x2802;
 :         | &#x2812;
