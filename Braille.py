@@ -48,11 +48,10 @@ class Braille:
         # End of sentence:
         if keys == "":
             tts.say(self.output)
-            printStr(self.output)
 	    result = ""
 	    for c in self.output:
 	        result+=braille[c]
-	    printStr(result)
+	    printStr(self.output+"\n"+result)
             return -1
         # Space:
         elif keys == " ":
