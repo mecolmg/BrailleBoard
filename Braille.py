@@ -52,9 +52,10 @@ class Braille:
         elif ";" in keys:
             for key in keys:
                 if key == ";":
+                    if(len(self.braille) > 0):
+                        self.braille = self.braille[:-1]
                     if(len(self.output) > 0):
                         self.output = self.output[:-1]
-                        self.braille = self.braille[:-1]
                         if(len(self.output) >= 0):
                             i=-1
                             word = ""
