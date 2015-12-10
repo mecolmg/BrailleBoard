@@ -48,3 +48,9 @@ Additional libraries used include:
 To run the program, execute 'tinker.py' from the terminal using the command 'python tinker.py'.
 You will be displayed with a display like this:
 
+![Project](http://i.imgur.com/9xJNlia.png)
+
+You can begin typing in letters, hitting the space bar after each letter to signify the end of those letters. Each letter will be spoken out loud to ensure the user knows what he or she is typing. Hitting the space bar with no other letters will result in a space being typed and the last word written being pronounced. 
+
+### Other remarks:
+This project has only been tested on linux and is not guarunteed to work on other systems. An implementation into the OS could not be reached without using software used in common keyloggers, and was therefore set aside to be pursued later. 
