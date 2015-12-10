@@ -15,7 +15,11 @@ def getInstructions():
 def calculateText():
 	tkMessageBox.showinfo("Example", "Example doeeeee")
 
-root.geometry("600x400")
+def toClipboard():
+	root.clipboard_clear()
+	root.clipboard_append(b.output)
+
+root.geometry("1000x800")
 root.title("Braille Keyboard")
 
 #come back and work on importing the jpg file within labelframe
@@ -28,6 +32,10 @@ inside.pack()
 #make a button for instructions, add the command 'display functions'
 instructions = Button(text="Instructions", command=getInstructions)
 instructions.pack(side=TOP)
+
+#make a button to copy to clipboard
+clip = Button(text="Copy To Clipboard", command=toClipboard)
+clip.pack(side=TOP)
 
 scrollbar = Scrollbar(root)
 scrollbar.pack(side=RIGHT, fill=Y)
