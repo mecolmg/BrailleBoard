@@ -7,6 +7,13 @@ Braille Board is a program that converts a regular keyboard into a braille keybo
 
 The brailler is a very simple concept, the six internal keys each map to one of the 6 dots of the familiar braille notation. These keyboards are very expensive to purchase, but are at the same time very usefull for blind children, who may not be familiar with the locations of letters on a standard keyboard.
 
+### Features:
+* Braille input without expensive keyboard
+* Text-To-Speach Features
+* Copy to clipboard functionality
+* Most common characters
+* GUI
+
 ### Implementation:
 With our implementation, the children just have to find the two tactile bumps over the 'F' and 'J' keys, and are able to keep their hands there, with their thumbs resting on the space. The mappings for keys are as follows:
 
