@@ -10,10 +10,7 @@ b = br.Braille()
 
 
 def getInstructions():
-	tkMessageBox.showinfo("Instructions", "***Insert Instructions Here***")
-
-def calculateText():
-	tkMessageBox.showinfo("Example", "Example doeeeee")
+	tkMessageBox.showinfo("Instructions", "This Braille Board program converts a regular keyboard into a braille keyboard. The format is that of the Perkins Brailler, a well known and utilized brailler. This program works as follows: The user recognizes six internal keys that map to one of hte 6 dots of the familiar braille notation. The user must find the tactile bumps over the 'F' and 'J' keys. The user's thumb will then rest on the spacebar. This position will allow for the user to input from all the valid keys: a, s, d, f, j, k, l, ; and <spacebar>. For full instructions of how to run the program, read the README.md on github.com/mecolmg/BrailleBoard/blob/master/README.md")
 
 def toClipboard():
 	root.clipboard_clear()
@@ -26,8 +23,8 @@ root.title("Braille Keyboard")
 labelframe = LabelFrame(root, text="Welcome to the Braille Keyboard")
 labelframe.pack(fill="both")
 
-inside = Label(labelframe, text="This is an open, free text to speech braille keyboard", height=10, width=40)
-inside.pack()
+inside = Label(labelframe, text="This is an open, free text to speech braille keyboard")
+inside.pack(fill=X)
 
 #make a button for instructions, add the command 'display functions'
 instructions = Button(text="Instructions", command=getInstructions)
