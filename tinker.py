@@ -34,7 +34,7 @@ scrollbar.pack(side=RIGHT, fill=Y)
 
 
 #make text area for entering data
-text = Text(root, state="disabled")
+text = Text(root, state="disabled", font="Helvetica 16 bold")
 text.pack(fill=tk.X)
 text.config(yscrollcommand=scrollbar.set)
 scrollbar.config(command=text.yview)
