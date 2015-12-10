@@ -1,10 +1,12 @@
 from Tkinter import *
+import Tkinter as tk
 import tkMessageBox
 #from PIL import ImageTk, Image //can use this for imaging
-import time
+import Braille as br
 
 
 root = Tk()
+b = br.Braille()
 
 
 def getInstructions():
@@ -27,31 +29,31 @@ inside.pack()
 instructions = Button(text="Instructions", command=getInstructions)
 instructions.pack(side=TOP)
 
+scrollbar = Scrollbar(root)
+scrollbar.pack(side=RIGHT, fill=Y)
+
+
 #make text area for entering data
-userLabel = Label(root, text="Enter characters: ")
-submit = Button(text="submit", command=calculateText)
-submit.pack()
-userLabel.pack()
+text = Text(root, state="disabled")
+text.pack(fill=tk.X)
+text.config(yscrollcommand=scrollbar.set)
+scrollbar.config(command=text.yview)
 
-userEntry = Entry(root, bd =5)
-userEntry.pack()
+keys = ""
+def keydown(event):
+	global keys
+	if event.char == " ":
+		if keys == "":
+			keys = " "
+		b.write(keys)
+		text.config(state="normal")
+		text.delete(1.0,END)
+		text.insert(INSERT,b.output+"\n"+b.braille)
+		text.config(state="disabled")
+		keys = ""
+	else:
+		keys += event.char
 
-#make an area for displaying the data
-textOutput = Text(root)
-textOutput.insert(INSERT, "hello")
-textOutput.pack(side = RIGHT);
-
-
-
-#footer = LabelFrame(root, text=" ")
-#footer.pack(fill="both")
-#toes = Label(footer, text="\n\n\n\n")
-#toes.pack()
-#var = StringVar();
-#label = Message( root, textvariable=var, relief=RAISED, width=200 )
-
-#var.set("Zachary Yee\nSeth Balodi\nColm Gallagher")
-#label.pack()
-
+root.bind("<KeyPress>", keydown)
 
 root.mainloop()

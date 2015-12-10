@@ -30,8 +30,8 @@ class Braille:
     def toBraille(letter):
         return braille[letter]
 
-    def write(self):
-        keys = raw_input()
+    def write(self, keys):
+        # keys = raw_input()
 
         # End of sentence:
         if keys == "":
@@ -54,6 +54,7 @@ class Braille:
                 if key == ";":
                     if(len(self.output) > 0):
                         self.output = self.output[:-1]
+                        self.braille = self.braille[:-1]
                         if(len(self.output) >= 0):
                             i=-1
                             word = ""
@@ -98,11 +99,11 @@ class Braille:
     def __str__(self):
         return self.output
 
-def writer():
-    b = Braille()
-    bw = 1
-    while bw!=-1:
-        bw = b.write()
+# def writer():
+#     b = Braille()
+#     bw = 1
+#     while bw!=-1:
+#         bw = b.write()
 
-writer()     
+# writer()     
 
